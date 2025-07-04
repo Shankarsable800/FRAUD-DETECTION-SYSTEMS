@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}Fraud Detection{% endblock %}</title>
+    <style>
+      body {
+        font-family: Arial;
+        margin: 20px;
+      }
+      header {
+        background-color: #f0f0f0;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 style="text-align: center">Fraud Detection System</h1>
+    </header>
+
+    {% block content %}
+    <!-- Child templates will insert content here -->
+    {% endblock %}
+  </body>
+</html>

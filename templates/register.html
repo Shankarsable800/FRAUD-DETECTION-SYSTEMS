@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="{% static '/css/style.css' %}">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <div class="wrapper">
+    <form action="register" method="post">
+    {% csrf_token %}
+      <h1>Register</h1>
+      <div class="input-box">
+        <input name="name" type="text" placeholder="Name" required>
+        <i class='bx bxs-user'></i>
+      </div>
+      <div class="input-box">
+        <input id="email" name="email" type="text" placeholder="Email-Address" required>
+        <i class='bx bxs-user'></i>
+      </div>
+      <div id="email-error" style="color: crimson; display: none;">Invalid email format!</div>
+  
+      <div class="input-box">
+        <input id="password" name="password" type="password" placeholder="Password" required>
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+      <div class="input-box">
+        <input id="re-password" name="re-password" type="password" placeholder="Re-Password" required>
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+      <div id="password-error" style="color: crimson; display: none;">Passwords do not match!</div>
+      <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+          const email = document.getElementById('email').value;
+          const emailError = document.getElementById('email-error');
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            event.preventDefault();
+            emailError.style.display = 'block';
+          } else {
+            emailError.style.display = 'none';
+          }
+
+          const password = document.getElementById('password').value;
+          const rePassword = document.getElementById('re-password').value;
+          const passwordError = document.getElementById('password-error');
+          if (password !== rePassword) {
+            event.preventDefault();
+            passwordError.style.display = 'block';
+          } else {
+            passwordError.style.display = 'none';
+          }
+        });
+      </script>
+      <button type="submit" class="btn">Register</button>
+      {% if error_message %}
+        <div style="color: crimson;">{{ error_message }}</div>
+      {% endif %}
+    </form>
+  </div>
+</body>
+</html>

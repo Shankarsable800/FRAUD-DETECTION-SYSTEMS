@@ -1,0 +1,70 @@
+{% extends "base.html" %} {% block content %}
+<h2 style="text-align: center; color: #d32f2f">
+  🔐 Fraud Transactions in Your Account
+</h2>
+
+<style>
+  .summary-box {
+    text-align: center;
+    font-size: 22px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffecec;
+    border-left: 6px solid #d32f2f;
+    width: fit-content;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+  }
+
+  th,
+  td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+
+  th {
+    background-color: #d32f2f;
+    color: white;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+</style>
+
+<div class="summary-box">
+  Total Fraud Transactions Detected: <strong>{{ total_frauds }}</strong>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Account Number</th>
+      <th>Amount</th>
+      <th>Description</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for txn in frauds %}
+    <tr>
+      <td>{{ txn.date }}</td>
+      <td>{{ txn.account_number }}</td>
+      <td>₹ {{ txn.amount }}</td>
+      <td>{{ txn.description }}</td>
+      <td><strong style="color: red">Fraud</strong></td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="5">No fraud transactions found in your account.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

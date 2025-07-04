@@ -1,0 +1,2259 @@
+<!DOCTYPE html>
+<html>
+  {% load static %}
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel = "icon" href ="{% static 'img/logo.png'%}" type = "image/x-icon"> 
+    
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="https://backoffice.mirrikh.com/assets/users/images/caption_icon.png">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+    <!-- Ionicons -->
+     <link rel="stylesheet" href="{% static 'css/adminlte.min.css'%}">
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-bs4/1.11.2/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/icheck-bootstrap/3.0.1/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="https://backoffice.mirrikh.com/assets/theme/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.min.css">
+    <!-- summernote -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.9.1/summernote-bs4.css">
+   <link rel="stylesheet" href="{% static 'css/sweetalert.min.css'%}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css'%}">
+
+  <!-- <link rel="stylesheet" type="text/css" href="https://backoffice.mirrikh.com/assets/css/daterangepicker.css" /> -->
+  <link rel="stylesheet" href="{% static 'css/daterangepicker.css'%}">
+
+
+  <!-- <link rel="stylesheet" type="text/css" href="https://backoffice.mirrikh.com/assets/css/magnific-popup.min.css" />  -->
+  <link rel="stylesheet" href="{% static 'css/magnific-popup.min.css'%}">
+
+  <!-- <link rel="stylesheet" href="https://backoffice.mirrikh.com/assets/css/tree.css">  -->
+  <link rel="stylesheet" href="{% static 'css/tree.css'%}">
+
+          <!-- js files -->
+
+  <!-- <script src="https://backoffice.mirrikh.com/assets/theme/plugins/jquery/jquery.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- <script type="text/javascript" src="https://backoffice.mirrikh.com/assets/js/popper.min.js"></script> -->
+  <script  type="text/javascript" src="{% static 'JS/popper.min.js'%}"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+
+  <!-- <script src="https://backoffice.mirrikh.com/assets/js/sweetalert.min.js"></script> -->
+  <script src="{% static 'JS/sweetalert.min.js'%}"></script>
+
+  <!-- <script type="text/javascript" src="https://backoffice.mirrikh.com/assets/js//plugins/bootstrap-datepicker.min.js"></script> -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+
+  <!-- <script type="text/javascript" src="https://backoffice.mirrikh.com/assets/js/moment.min.js"></script> -->
+  <script  type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+  <!-- <script type="text/javascript" src="https://backoffice.mirrikh.com/assets/js/daterangepicker.min.js"></script> -->
+  <script src="{% static 'JS/daterangepicker.min.js'%}"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" ></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" >
+  <!-- <script type="text/javascript" src="https://backoffice.mirrikh.com/assets/js/jquery.magnific-popup.min.js"></script> -->
+    
+  
+<!--css-->
+    <style>
+      .error {
+        color: red;
+        font-weight: normal !important;
+      }
+
+      .success {
+        color: green
+      }
+
+      .ribbon-wrapper {
+        height: 70px;
+        /* overflow: hidden; */
+        position: absolute;
+        left: -49px;
+        top: -2px;
+        width: 110px;
+        z-index: 10;
+      }
+
+      .ribbon-wrapper .ribbon {
+        box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+        font-size: .8rem;
+        line-height: 100%;
+        padding: .375rem 0;
+        position: relative;
+        left: 0;
+        text-align: center;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, .4);
+        text-transform: uppercase;
+        top: 8px;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(-45deg);
+        width: 132px;
+      }
+      .loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('https://backoffice.mirrikh.com/assets/imgs/loader.gif') 50% 50% no-repeat rgb(249,249,249);
+    opacity: .8;
+}
+
+.sidebar-mini.sidebar-collapse .logo{
+    display:none;
+}
+.right_menu .dropdown-menu {
+    left: -150px!important;
+    right: 50px!important;
+}
+.right_menu .dropdown-toggle::after{
+    content:none!important;
+}
+.right_menu .dropdown-toggle{
+    color:#6c757d;
+}
+.mt-15{
+    margin-top:15px;
+}
+.mt-30{
+    margin-top:30px;
+}
+
+.eml{
+      word-break: break-all;
+    }
+
+.banner_gold .nav-link{
+  font-size: 16px;
+}
+@media(max-width:767.98px){
+    .pin_request_form .small-box{text-align:left!important;}
+    .rmb-15{margin-bottom:15px;}
+    .rmt-15{margin-top:15px!important;}
+    
+}
+
+@media(max-width:675px){
+  .rmt-8{
+    margin-top:8.5rem!important;
+  }
+}
+.w-140{
+    width:140px;
+}
+.call_box{
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.call_box i{
+  font-size: 20px;
+  color: #232b38;
+}
+.c_detail p{
+  color: #232b38;
+  font-size: 15px;
+  font-weight: 900;
+  margin-bottom: 0;
+}
+.c_detail span{
+  color: #2d2d2d;
+  font-size: 13px;
+  font-weight: 500;
+}
+.call_box.work{
+  justify-content: flex-end;
+}
+.navbar-light {
+    background-color: transparent;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #fff!important;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color: #fff!important;
+}
+.right_menu .navbar-nav .nav-link {
+    color: #000!important;
+}
+.right_menu .navbar-nav .nav-link:focus, .right_menu .navbar-nav .nav-link:hover {
+    color: #fea900!important;
+}
+.breadcrumb-item a{color:#000;}
+.breadcrumb-item a:hover{color:#fea900;}
+.text-blue{
+  color: #f9bd05;
+  font-weight: 700;
+}
+.leadership {
+  position: absolute;
+  left:50%;
+  top:13px;
+  transform: translateX(-50%);
+}
+.logo-demo:after {
+    background-size: 75%;
+    background-repeat: no-repeat;
+    content: "";
+    position: absolute;
+    top: -190px;
+    left: -100px;
+    width: 520px;
+    height: 390px;
+    z-index: -1;
+    cursor: auto;
+    background: url(https://backoffice.mirrikh.com/assets/images/logo-bg.png);
+}
+.main_logo_mirrikh {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 6px;
+    /*background: rgb(255 255 255);*/
+    border-radius: 5px;
+    margin: 8px;
+}
+@media(min-width: 768px){
+.leadership > div{
+  margin-right: 25px;
+}
+}
+
+.blinking{
+    animation:blinkingText 1.2s infinite;
+}
+@keyframes blinkingText{
+    0%{     color: #0548bd;    }
+    49%{    color: #0548bd; }
+    60%{    color: transparent; }
+    99%{    color:transparent;  }
+    100%{   color: #0548bd;    }
+}
+
+.head-color{
+color: white;
+background-color: rgb(0 0 0 / 32%);
+}
+</style>
+  </head>
+  <body class="hold-transition sidebar-mini">
+    <div class="loader" style="display: none"></div>
+  <div id="loadingGif" style="display:none;position: fixed;z-index: 
+  1111;left: 0;right: 0;height: 100vh;background-color: #ffffffcf;">
+  <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" 
+  style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);"></div>
+
+  <script>
+              $(document).ready(function(){
+                $('.toast').toast('show');
+              });
+  </script> 
+  <div class="col-lg-12 col-md-12" >
+      <div class="position-relative">
+       <div class="leadership d-flex flex-md-row flex-column"></div>
+      <div class="wrapper position-relative"></div>
+      </div>
+       <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light bg-light" style="display:flex;">
+          <!-- Left navbar links -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+            </li>
+          </ul>
+          
+          <div style="margin-left:auto;text-decoration:none" class="right_menu">
+               <ul class="navbar-nav">
+                    <li class="dropdown notifications-menu open">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                      <i class="fas fa-bell"></i>
+                      <span class="label label-warning">0</span>
+                      </a>
+  
+
+                <ul class="dropdown-menu text-center p-0" class="border-custom">
+                    <li class="header text-center">You have 0 notifications</li>
+                    
+                      <!-- inner menu: contains the actual data -->
+                      <ul class="menu pl-0">                          
+                      </ul>
+                    
+                    <li class="footer"><a href="">View all</a></li>
+                </ul>
+
+
+                
+          <div class="collapse navbar-collapse header_drop" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="{% static 'img/images.png'%}" class="img-circle" alt="User Image" style="max-width:100%;height: 100%;">
+                </a>
+          <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
+          <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/logout">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </ul>       
+</div>
+</nav>
+        <!-- Navbar -->
+        <!-- Main Sidebar Container -->
+<aside class="main-sidebar elevation-4">
+<!--<img src="https://backoffice.mirrikh.com/assets/imgs/logo.jpg" alt="SECOURS" height="34px" width="150px" class="logo">-->
+
+<!-- Sidebar -->
+<div class="sidebar">
+<div class="main_logo_mirrikh logo-demo">
+	<div class="inner_logo" style="margin-top:20px;">
+    <img src="{% static 'img/images.png'%}" class="img-fluid display_pro" style="max-height:100px;">
+	  <!-- <img src="https://backoffice.mirrikh.com/assets/imgs/mirrikh-logo-gif.gif" class="img-fluid" style="max-height:34px;margin-top:-8px;margin-left:-44px;position:absolute"> -->
+	</div>
+</div>
+<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+  <div class="image">
+    <img src="{% static 'img/profile_1.png'%}" class="img-circle elevation-2" alt="User Image">
+  </div>
+ <div class="info">
+    <a href="#" class="d-block">{{name}}</a>
+ </div>
+</div>
+<!-- Sidebar Menu -->
+
+<nav class="mt-2">
+              <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item menu-open">
+                  <a href="/home" class="nav-link head-color" >
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>Dashboard</p>
+                  </a>
+                </li>
+              <!-- khushali start -->
+              <li class="nav-item " >
+                  <a href="/add-fraud" class="nav-link" style="">
+                    <i class="nav-icon fas fa-map-pin"></i>
+                    <p>Add Fraud</p>
+                  </a>
+              </li>
+              <!-- khushali start -->              
+              <li class="nav-item ">
+                  <a href="/upload" class="nav-link" style="">
+                    <i class="nav-icon fas fa-file"></i>
+                    <p>Upload Statement</p>
+                  </a>
+              </li>
+         
+            </ul>
+          </nav>
+               
+<!--ADD NEW TEANSACTION FORM -->
+<!-- Trigger Button -->
+<button id="openFormBtn" class="open-btn">+ Add New Transaction</button>
+
+<!-- Popup Modal -->
+<div id="formModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h2 style="margin-bottom: 10px;">Add New Transaction</h2>
+    <form id="txn-form" method="POST">
+      {% csrf_token %}
+      <input type="text" name="recipient" placeholder="Recipient Account or Number" required>
+      <input type="text" name="description" placeholder="Description (optional)">
+      <input type="number" name="amount" placeholder="Amount ₹" required min="0">
+      <select name="type" required>
+        <option value="">Select Type</option>
+        <option value="debit">Debit</option>
+        <option value="credit">Credit</option>
+      </select>
+      <button type="submit">Submit</button>
+    </form>
+    <div id="txn-status"></div>
+  </div>
+</div>
+
+<!-- Styles -->
+<style>
+  .open-btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 20px;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .modal-content input,
+  .modal-content select,
+  .modal-content button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+  }
+
+  .modal-content input:focus,
+  .modal-content select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+  .modal-content button {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    margin-top: 15px;
+    transition: background 0.3s ease;
+  }
+
+  .modal-content button:hover {
+    background-color: #0056b3;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+  }
+
+  #txn-status {
+    margin-top: 10px;
+    color: #28a745;
+    font-weight: bold;
+    text-align: center;
+  }
+</style>
+
+<!-- Script -->
+<script>
+  const modal = document.getElementById("formModal");
+  const openBtn = document.getElementById("openFormBtn");
+  const closeBtn = document.querySelector(".close-btn");
+
+  openBtn.onclick = () => {
+    modal.style.display = "block";
+  };
+
+  closeBtn.onclick = () => {
+    modal.style.display = "none";
+  };
+
+  window.onclick = event => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  };
+</script>
+        </div>
+          <!-- Sidebar -->
+
+
+        </aside>
+        <!-- Main Sidebar Container -->
+
+        <!-- Content Wrapper. Contains page content -->
+         
+<div class="content-wrapper">
+       
+<style>
+.text-muted{
+    word-break: break-word;
+}
+</style>
+<title>DASHBOARD</title>
+
+
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Dashboard</h1>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+
+
+<!-- Main content -->
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Dashboard</h3>
+        </div>
+
+
+<div class="card-body">
+  <div class="row">
+    
+    <!-- 1. Total Fraud Detected -->
+    <div class="col-lg-3 col-12 height_custom">
+      <a href="{% url 'fraud-transactions' %}" style="text-decoration: none; color: inherit; display: block;">
+        <div class="small-box bg-info">
+          <div class="inner">
+            <h3>{{ fraud_count|default_if_none:"0" }}</h3>
+            <p>Total Fraud Detected</p>
+            <p>E-wallet</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 2. Total Transactions -->
+    <div class="col-lg-3 col-12 height_custom">
+      <a href="{% url 'all-transactions' %}" style="text-decoration: none; color: inherit; display: block;">
+      <div class="small-box" style="background-color: #7460ee !important; color: white;">
+        <div class="inner">
+          <h3>{{ transaction_count|default_if_none:"0" }}</h3>
+          <p>Total Transactions</p>
+          <p>E-wallet</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-random" aria-hidden="true"></i>
+        </div>
+      </div>
+    </a>
+    </div>
+
+    <!-- 3. Total Funds -->
+    <div class="col-lg-3 col-12 height_custom">
+      <a href="{% url 'total-funds' %}" style="text-decoration: none; color: inherit; display: block;">
+      <div class="small-box bg-success">
+        <div class="inner">
+          <h3>₹ {{ total_funds|floatformat:2|default_if_none:"0.00" }}</h3>
+
+          <p>Total Funds</p>
+          <p>E-wallet</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-money" aria-hidden="true"></i>
+        </div>
+      </div>
+    </a>
+    </div>
+
+    <!-- 4. Total Lost Funds -->
+    <div class="col-lg-3 col-12 height_custom">
+      <a href="{% url 'lost-transactions' %}" style="text-decoration: none; color: inherit; display: block;">
+        <div class="small-box bg-danger">
+          <div class="inner">
+            <h3>₹ {{ total_lost_funds|floatformat:2|default_if_none:"0.00" }}</h3>
+            <p>Total Lost Funds</p>
+            <p>E-wallet</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-warning" aria-hidden="true"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+<!--charts button-->
+<div style="text-align: center; margin-top: 40px">
+  <a href="{% url 'fraud_dashboard' %}"
+    style="
+      background-color: #1e88e5;
+      padding: 12px 24px;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    "
+    >📈 View Detailed Charts</a>
+</div>
+    <style>
+    /* .small-box{
+    	height:100%;
+    } */
+    /* #pinimg_content {
+        position: relative;
+    }
+    #pinimg_content img {
+        position: absolute;
+     
+        bottom:10px;
+        right: 0px;
+      
+    } */
+    #logo_position{
+        height:158px;
+    }
+    /* #pinimg_content_logo{
+        position: absolute;
+        bottom:2px;
+        right: 0px;
+
+    } */
+</style>
+</section>
+<script type="text/javascript">
+    function myFunction() {
+    var copyText = document.getElementById("myInput");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+    // alert("Copied the text: " + copyText.value);
+
+    swal({
+              title: "Copied",
+              icon: 'warning',
+              text:  copyText.value,
+              showLoaderOnConfirm: true,
+          });
+  }
+
+
+</script>        
+</div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+          <div class="float-right d-none d-sm-block">
+          </div>
+          Copyright &copy; 2025 . All rights Reserved by <strong></strong>
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+          <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+      </div>
+      <!-- Site wrapper -->
+
+<!-- Bootstrap 4 -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+      
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/js/adminlte.min.js"></script>  
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.20/js/jquery.dataTables.js"></script>
+    
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-bs4/1.11.2/dataTables.bootstrap4.js"></script>
+
+      
+</div>
+</div>
+<script type="text/javascript">
+  document.onreadystatechange = function() { 
+  
+    
+}; 
+    $(document).ready(function() {
+
+  $('.image-popup-vertical-fit').magnificPopup({
+    type: 'image',
+    closeOnContentClick: true,
+    mainClass: 'mfp-img-mobile',
+    image: {
+      verticalFit: true
+    }
+    
+  });
+
+  $('.image-popup-fit-width').magnificPopup({
+    type: 'image',
+    closeOnContentClick: true,
+    image: {
+      verticalFit: false
+    }
+  });
+
+  $('.image-popup-no-margins').magnificPopup({
+    type: 'image',
+    closeOnContentClick: true,
+    closeBtnInside: false,
+    fixedContentPos: true,
+    mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+    image: {
+      verticalFit: true
+    },
+    zoom: {
+      enabled: true,
+      duration: 300 // don't foget to change the duration also in CSS
+    }
+  });
+
+});
+</script>
+<script>
+document.getElementById('txn-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  let formData = new FormData(this);
+
+  let response = await fetch("{% url 'add_transaction' %}", {
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': '{{ csrf_token }}'
+    },
+    body: formData
+  });
+
+  let result = await response.json();
+  let statusBox = document.getElementById('txn-status');
+  statusBox.innerText = result.message;
+  statusBox.style.color = result.status === 'fraud' ? 'red' : 'green';
+});
+</script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+  {% load static %}
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel = "icon" href ="{% static 'img/logo.png'%}" type = "image/x-icon"> 
+    
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="https://backoffice.mirrikh.com/assets/users/images/caption_icon.png">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+    <!-- Ionicons -->
+     <link rel="stylesheet" href="{% static 'css/adminlte.min.css'%}">
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-bs4/1.11.2/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/icheck-bootstrap/3.0.1/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="https://backoffice.mirrikh.com/assets/theme/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.min.css">
+    <!-- summernote -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.9.1/summernote-bs4.css">
+   <link rel="stylesheet" href="{% static 'css/sweetalert.min.css'%}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css'%}">
+
+  <!-- <link rel="stylesheet" type="text/css" href="https://backoffice.mirrikh.com/assets/css/daterangepicker.css" /> -->
+  <link rel="stylesheet" href="{% static 'css/daterangepicker.css'%}">
+
+
+  <!-- <link rel="stylesheet" type="text/css" href="https://backoffice.mirrikh.com/assets/css/magnific-popup.min.css" />  -->
+  <link rel="stylesheet" href="{% static 'css/magnific-popup.min.css'%}">
+
+  <!-- <link rel="stylesheet" href="https://backoffice.mirrikh.com/assets/css/tree.css">  -->
+  <link rel="stylesheet" href="{% static 'css/tree.css'%}">
+
+          <!-- js files -->
+
+  <!-- <script src="https://backoffice.mirrikh.com/assets/theme/plugins/jquery/jquery.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- <script type="text/javascript" src="https://backoffice.mirrikh.com/assets/js/popper.min.js"></script> -->
+  <script  type="text/javascript" src="{% static 'JS/popper.min.js'%}"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+
+  <!-- <script src="https://backoffice.mirrikh.com/assets/js/sweetalert.min.js"></script> -->
+  <script src="{% static 'JS/sweetalert.min.js'%}"></script>
+
+  <!-- <script type="text/javascript" src="https://backoffice.mirrikh.com/assets/js//plugins/bootstrap-datepicker.min.js"></script> -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+
+  <!-- <script type="text/javascript" src="https://backoffice.mirrikh.com/assets/js/moment.min.js"></script> -->
+  <script  type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+  <!-- <script type="text/javascript" src="https://backoffice.mirrikh.com/assets/js/daterangepicker.min.js"></script> -->
+  <script src="{% static 'JS/daterangepicker.min.js'%}"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" ></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" >
+  <!-- <script type="text/javascript" src="https://backoffice.mirrikh.com/assets/js/jquery.magnific-popup.min.js"></script> -->
+    
+  
+<!--css-->
+    <style>
+      .error {
+        color: red;
+        font-weight: normal !important;
+      }
+
+      .success {
+        color: green
+      }
+
+      .ribbon-wrapper {
+        height: 70px;
+        /* overflow: hidden; */
+        position: absolute;
+        left: -49px;
+        top: -2px;
+        width: 110px;
+        z-index: 10;
+      }
+
+      .ribbon-wrapper .ribbon {
+        box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+        font-size: .8rem;
+        line-height: 100%;
+        padding: .375rem 0;
+        position: relative;
+        left: 0;
+        text-align: center;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, .4);
+        text-transform: uppercase;
+        top: 8px;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(-45deg);
+        width: 132px;
+      }
+      .loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('https://backoffice.mirrikh.com/assets/imgs/loader.gif') 50% 50% no-repeat rgb(249,249,249);
+    opacity: .8;
+}
+
+.sidebar-mini.sidebar-collapse .logo{
+    display:none;
+}
+.right_menu .dropdown-menu {
+    left: -150px!important;
+    right: 50px!important;
+}
+.right_menu .dropdown-toggle::after{
+    content:none!important;
+}
+.right_menu .dropdown-toggle{
+    color:#6c757d;
+}
+.mt-15{
+    margin-top:15px;
+}
+.mt-30{
+    margin-top:30px;
+}
+
+.eml{
+      word-break: break-all;
+    }
+
+.banner_gold .nav-link{
+  font-size: 16px;
+}
+@media(max-width:767.98px){
+    .pin_request_form .small-box{text-align:left!important;}
+    .rmb-15{margin-bottom:15px;}
+    .rmt-15{margin-top:15px!important;}
+    
+}
+
+@media(max-width:675px){
+  .rmt-8{
+    margin-top:8.5rem!important;
+  }
+}
+.w-140{
+    width:140px;
+}
+.call_box{
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.call_box i{
+  font-size: 20px;
+  color: #232b38;
+}
+.c_detail p{
+  color: #232b38;
+  font-size: 15px;
+  font-weight: 900;
+  margin-bottom: 0;
+}
+.c_detail span{
+  color: #2d2d2d;
+  font-size: 13px;
+  font-weight: 500;
+}
+.call_box.work{
+  justify-content: flex-end;
+}
+.navbar-light {
+    background-color: transparent;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #fff!important;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color: #fff!important;
+}
+.right_menu .navbar-nav .nav-link {
+    color: #000!important;
+}
+.right_menu .navbar-nav .nav-link:focus, .right_menu .navbar-nav .nav-link:hover {
+    color: #fea900!important;
+}
+.breadcrumb-item a{color:#000;}
+.breadcrumb-item a:hover{color:#fea900;}
+.text-blue{
+  color: #f9bd05;
+  font-weight: 700;
+}
+.leadership {
+  position: absolute;
+  left:50%;
+  top:13px;
+  transform: translateX(-50%);
+}
+.logo-demo:after {
+    background-size: 75%;
+    background-repeat: no-repeat;
+    content: "";
+    position: absolute;
+    top: -190px;
+    left: -100px;
+    width: 520px;
+    height: 390px;
+    z-index: -1;
+    cursor: auto;
+    background: url(https://backoffice.mirrikh.com/assets/images/logo-bg.png);
+}
+.main_logo_mirrikh {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 6px;
+    /*background: rgb(255 255 255);*/
+    border-radius: 5px;
+    margin: 8px;
+}
+@media(min-width: 768px){
+.leadership > div{
+  margin-right: 25px;
+}
+}
+
+.blinking{
+    animation:blinkingText 1.2s infinite;
+}
+@keyframes blinkingText{
+    0%{     color: #0548bd;    }
+    49%{    color: #0548bd; }
+    60%{    color: transparent; }
+    99%{    color:transparent;  }
+    100%{   color: #0548bd;    }
+}
+
+.head-color{
+color: white;
+background-color: rgb(0 0 0 / 32%);
+}
+</style>
+  </head>
+  <body class="hold-transition sidebar-mini">
+    <div class="loader" style="display: none"></div>
+  <div id="loadingGif" style="display:none;position: fixed;z-index: 
+  1111;left: 0;right: 0;height: 100vh;background-color: #ffffffcf;">
+  <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" 
+  style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);"></div>
+
+  <script>
+              $(document).ready(function(){
+                $('.toast').toast('show');
+              });
+  </script> 
+  <div class="col-lg-12 col-md-12" >
+      <div class="position-relative">
+       <div class="leadership d-flex flex-md-row flex-column"></div>
+      <div class="wrapper position-relative"></div>
+      </div>
+       <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light bg-light" style="display:flex;">
+          <!-- Left navbar links -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+            </li>
+          </ul>
+          
+          <div style="margin-left:auto;text-decoration:none" class="right_menu">
+               <ul class="navbar-nav">
+                    <li class="dropdown notifications-menu open">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                      <i class="fas fa-bell"></i>
+                      <span class="label label-warning">0</span>
+                      </a>
+  
+
+                <ul class="dropdown-menu text-center p-0" class="border-custom">
+                    <li class="header text-center">You have 0 notifications</li>
+                    
+                      <!-- inner menu: contains the actual data -->
+                      <ul class="menu pl-0">                          
+                      </ul>
+                    
+                    <li class="footer"><a href="">View all</a></li>
+                </ul>
+
+
+                
+          <div class="collapse navbar-collapse header_drop" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="{% static 'img/images.png'%}" class="img-circle" alt="User Image" style="max-width:100%;height: 100%;">
+                </a>
+          <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
+          <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/logout">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </ul>       
+</div>
+</nav>
+        <!-- Navbar -->
+        <!-- Main Sidebar Container -->
+<aside class="main-sidebar elevation-4">
+<!--<img src="https://backoffice.mirrikh.com/assets/imgs/logo.jpg" alt="SECOURS" height="34px" width="150px" class="logo">-->
+
+<!-- Sidebar -->
+<div class="sidebar">
+<div class="main_logo_mirrikh logo-demo">
+	<div class="inner_logo" style="margin-top:20px;">
+    <img src="{% static 'img/images.png'%}" class="img-fluid display_pro" style="max-height:100px;">
+	  <!-- <img src="https://backoffice.mirrikh.com/assets/imgs/mirrikh-logo-gif.gif" class="img-fluid" style="max-height:34px;margin-top:-8px;margin-left:-44px;position:absolute"> -->
+	</div>
+</div>
+<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+  <div class="image">
+    <img src="{% static 'img/profile_1.png'%}" class="img-circle elevation-2" alt="User Image">
+  </div>
+ <div class="info">
+    <a href="#" class="d-block">{{name}}</a>
+ </div>
+</div>
+<!-- Sidebar Menu -->
+
+<nav class="mt-2">
+              <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item menu-open">
+                  <a href="/home" class="nav-link head-color" >
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>Dashboard</p>
+                  </a>
+                </li>
+              <!-- khushali start -->
+              <li class="nav-item " >
+                  <a href="/add-fraud" class="nav-link" style="">
+                    <i class="nav-icon fas fa-map-pin"></i>
+                    <p>Add Fraud</p>
+                  </a>
+              </li>
+              <!-- khushali start -->              
+              <li class="nav-item ">
+                  <a href="/upload" class="nav-link" style="">
+                    <i class="nav-icon fas fa-file"></i>
+                    <p>Upload Statement</p>
+                  </a>
+              </li>
+         
+            </ul>
+          </nav>
+               
+<!--ADD NEW TEANSACTION FORM -->
+<!-- Trigger Button -->
+<button id="openFormBtn" class="open-btn">+ Add New Transaction</button>
+
+<!-- Popup Modal -->
+<div id="formModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h2 style="margin-bottom: 10px;">Add New Transaction</h2>
+    <form id="txn-form" method="POST">
+      {% csrf_token %}
+      <input type="text" name="recipient" placeholder="Recipient Account or Number" required>
+      <input type="text" name="description" placeholder="Description (optional)">
+      <input type="number" name="amount" placeholder="Amount ₹" required min="0">
+      <select name="type" required>
+        <option value="">Select Type</option>
+        <option value="debit">Debit</option>
+        <option value="credit">Credit</option>
+      </select>
+      <button type="submit">Submit</button>
+    </form>
+    <div id="txn-status"></div>
+  </div>
+</div>
+
+<!-- Styles -->
+<style>
+  .open-btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 20px;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .modal-content input,
+  .modal-content select,
+  .modal-content button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+  }
+
+  .modal-content input:focus,
+  .modal-content select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+  .modal-content button {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    margin-top: 15px;
+    transition: background 0.3s ease;
+  }
+
+  .modal-content button:hover {
+    background-color: #0056b3;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+  }
+
+  #txn-status {
+    margin-top: 10px;
+    color: #28a745;
+    font-weight: bold;
+    text-align: center;
+  }
+</style>
+
+<!-- Script -->
+<script>
+  const modal = document.getElementById("formModal");
+  const openBtn = document.getElementById("openFormBtn");
+  const closeBtn = document.querySelector(".close-btn");
+
+  openBtn.onclick = () => {
+    modal.style.display = "block";
+  };
+
+  closeBtn.onclick = () => {
+    modal.style.display = "none";
+  };
+
+  window.onclick = event => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  };
+</script>
+        </div>
+          <!-- Sidebar -->
+
+
+        </aside>
+        <!-- Main Sidebar Container -->
+
+        <!-- Content Wrapper. Contains page content -->
+         
+<div class="content-wrapper">
+       
+<style>
+.text-muted{
+    word-break: break-word;
+}
+</style>
+<title>DASHBOARD</title>
+
+
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Dashboard</h1>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+
+
+<!-- Main content -->
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Dashboard</h3>
+        </div>
+
+
+<div class="card-body">
+  <div class="row">
+    
+    <!-- 1. Total Fraud Detected -->
+    <div class="col-lg-3 col-12 height_custom">
+      <a href="{% url 'fraud-transactions' %}" style="text-decoration: none; color: inherit; display: block;">
+        <div class="small-box bg-info">
+          <div class="inner">
+            <h3>{{ fraud_count|default_if_none:"0" }}</h3>
+            <p>Total Fraud Detected</p>
+            <p>E-wallet</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 2. Total Transactions -->
+    <div class="col-lg-3 col-12 height_custom">
+      <a href="{% url 'all-transactions' %}" style="text-decoration: none; color: inherit; display: block;">
+      <div class="small-box" style="background-color: #7460ee !important; color: white;">
+        <div class="inner">
+          <h3>{{ transaction_count|default_if_none:"0" }}</h3>
+          <p>Total Transactions</p>
+          <p>E-wallet</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-random" aria-hidden="true"></i>
+        </div>
+      </div>
+    </a>
+    </div>
+
+    <!-- 3. Total Funds -->
+    <div class="col-lg-3 col-12 height_custom">
+      <a href="{% url 'total-funds' %}" style="text-decoration: none; color: inherit; display: block;">
+      <div class="small-box bg-success">
+        <div class="inner">
+          <h3>₹ {{ total_funds|floatformat:2|default_if_none:"0.00" }}</h3>
+
+          <p>Total Funds</p>
+          <p>E-wallet</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-money" aria-hidden="true"></i>
+        </div>
+      </div>
+    </a>
+    </div>
+
+    <!-- 4. Total Lost Funds -->
+    <div class="col-lg-3 col-12 height_custom">
+      <a href="{% url 'lost-transactions' %}" style="text-decoration: none; color: inherit; display: block;">
+        <div class="small-box bg-danger">
+          <div class="inner">
+            <h3>₹ {{ total_lost_funds|floatformat:2|default_if_none:"0.00" }}</h3>
+            <p>Total Lost Funds</p>
+            <p>E-wallet</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-warning" aria-hidden="true"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+<!--charts button-->
+<div style="text-align: center; margin-top: 40px">
+  <a href="{% url 'fraud_dashboard' %}"
+    style="
+      background-color: #1e88e5;
+      padding: 12px 24px;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    "
+    >📈 View Detailed Charts</a>
+</div>
+    <style>
+    /* .small-box{
+    	height:100%;
+    } */
+    /* #pinimg_content {
+        position: relative;
+    }
+    #pinimg_content img {
+        position: absolute;
+     
+        bottom:10px;
+        right: 0px;
+      
+    } */
+    #logo_position{
+        height:158px;
+    }
+    /* #pinimg_content_logo{
+        position: absolute;
+        bottom:2px;
+        right: 0px;
+
+    } */
+</style>
+</section>
+<script type="text/javascript">
+    function myFunction() {
+    var copyText = document.getElementById("myInput");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+    // alert("Copied the text: " + copyText.value);
+
+    swal({
+              title: "Copied",
+              icon: 'warning',
+              text:  copyText.value,
+              showLoaderOnConfirm: true,
+          });
+  }
+
+
+</script>        
+</div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+          <div class="float-right d-none d-sm-block">
+          </div>
+          Copyright &copy; 2025 . All rights Reserved by <strong></strong>
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+          <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+      </div>
+      <!-- Site wrapper -->
+
+<!-- Bootstrap 4 -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+      
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/js/adminlte.min.js"></script>  
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.20/js/jquery.dataTables.js"></script>
+    
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-bs4/1.11.2/dataTables.bootstrap4.js"></script>
+
+      
+</div>
+</div>
+<script type="text/javascript">
+  document.onreadystatechange = function() { 
+  
+    
+}; 
+    $(document).ready(function() {
+
+  $('.image-popup-vertical-fit').magnificPopup({
+    type: 'image',
+    closeOnContentClick: true,
+    mainClass: 'mfp-img-mobile',
+    image: {
+      verticalFit: true
+    }
+    
+  });
+
+  $('.image-popup-fit-width').magnificPopup({
+    type: 'image',
+    closeOnContentClick: true,
+    image: {
+      verticalFit: false
+    }
+  });
+
+  $('.image-popup-no-margins').magnificPopup({
+    type: 'image',
+    closeOnContentClick: true,
+    closeBtnInside: false,
+    fixedContentPos: true,
+    mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+    image: {
+      verticalFit: true
+    },
+    zoom: {
+      enabled: true,
+      duration: 300 // don't foget to change the duration also in CSS
+    }
+  });
+
+});
+</script>
+<script>
+document.getElementById('txn-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  let formData = new FormData(this);
+
+  let response = await fetch("{% url 'add_transaction' %}", {
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': '{{ csrf_token }}'
+    },
+    body: formData
+  });
+
+  let result = await response.json();
+  let statusBox = document.getElementById('txn-status');
+  statusBox.innerText = result.message;
+  statusBox.style.color = result.status === 'fraud' ? 'red' : 'green';
+});
+</script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+  {% load static %}
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel = "icon" href ="{% static 'img/logo.png'%}" type = "image/x-icon"> 
+    
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="https://backoffice.mirrikh.com/assets/users/images/caption_icon.png">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+    <!-- Ionicons -->
+     <link rel="stylesheet" href="{% static 'css/adminlte.min.css'%}">
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-bs4/1.11.2/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/icheck-bootstrap/3.0.1/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="https://backoffice.mirrikh.com/assets/theme/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.min.css">
+    <!-- summernote -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.9.1/summernote-bs4.css">
+   <link rel="stylesheet" href="{% static 'css/sweetalert.min.css'%}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css'%}">
+
+  <!-- <link rel="stylesheet" type="text/css" href="https://backoffice.mirrikh.com/assets/css/daterangepicker.css" /> -->
+  <link rel="stylesheet" href="{% static 'css/daterangepicker.css'%}">
+
+
+  <!-- <link rel="stylesheet" type="text/css" href="https://backoffice.mirrikh.com/assets/css/magnific-popup.min.css" />  -->
+  <link rel="stylesheet" href="{% static 'css/magnific-popup.min.css'%}">
+
+  <!-- <link rel="stylesheet" href="https://backoffice.mirrikh.com/assets/css/tree.css">  -->
+  <link rel="stylesheet" href="{% static 'css/tree.css'%}">
+
+          <!-- js files -->
+
+  <!-- <script src="https://backoffice.mirrikh.com/assets/theme/plugins/jquery/jquery.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- <script type="text/javascript" src="https://backoffice.mirrikh.com/assets/js/popper.min.js"></script> -->
+  <script  type="text/javascript" src="{% static 'JS/popper.min.js'%}"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+
+  <!-- <script src="https://backoffice.mirrikh.com/assets/js/sweetalert.min.js"></script> -->
+  <script src="{% static 'JS/sweetalert.min.js'%}"></script>
+
+  <!-- <script type="text/javascript" src="https://backoffice.mirrikh.com/assets/js//plugins/bootstrap-datepicker.min.js"></script> -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+
+  <!-- <script type="text/javascript" src="https://backoffice.mirrikh.com/assets/js/moment.min.js"></script> -->
+  <script  type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+  <!-- <script type="text/javascript" src="https://backoffice.mirrikh.com/assets/js/daterangepicker.min.js"></script> -->
+  <script src="{% static 'JS/daterangepicker.min.js'%}"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" ></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" >
+  <!-- <script type="text/javascript" src="https://backoffice.mirrikh.com/assets/js/jquery.magnific-popup.min.js"></script> -->
+    
+  
+<!--css-->
+    <style>
+      .error {
+        color: red;
+        font-weight: normal !important;
+      }
+
+      .success {
+        color: green
+      }
+
+      .ribbon-wrapper {
+        height: 70px;
+        /* overflow: hidden; */
+        position: absolute;
+        left: -49px;
+        top: -2px;
+        width: 110px;
+        z-index: 10;
+      }
+
+      .ribbon-wrapper .ribbon {
+        box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+        font-size: .8rem;
+        line-height: 100%;
+        padding: .375rem 0;
+        position: relative;
+        left: 0;
+        text-align: center;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, .4);
+        text-transform: uppercase;
+        top: 8px;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(-45deg);
+        width: 132px;
+      }
+      .loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('https://backoffice.mirrikh.com/assets/imgs/loader.gif') 50% 50% no-repeat rgb(249,249,249);
+    opacity: .8;
+}
+
+.sidebar-mini.sidebar-collapse .logo{
+    display:none;
+}
+.right_menu .dropdown-menu {
+    left: -150px!important;
+    right: 50px!important;
+}
+.right_menu .dropdown-toggle::after{
+    content:none!important;
+}
+.right_menu .dropdown-toggle{
+    color:#6c757d;
+}
+.mt-15{
+    margin-top:15px;
+}
+.mt-30{
+    margin-top:30px;
+}
+
+.eml{
+      word-break: break-all;
+    }
+
+.banner_gold .nav-link{
+  font-size: 16px;
+}
+@media(max-width:767.98px){
+    .pin_request_form .small-box{text-align:left!important;}
+    .rmb-15{margin-bottom:15px;}
+    .rmt-15{margin-top:15px!important;}
+    
+}
+
+@media(max-width:675px){
+  .rmt-8{
+    margin-top:8.5rem!important;
+  }
+}
+.w-140{
+    width:140px;
+}
+.call_box{
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.call_box i{
+  font-size: 20px;
+  color: #232b38;
+}
+.c_detail p{
+  color: #232b38;
+  font-size: 15px;
+  font-weight: 900;
+  margin-bottom: 0;
+}
+.c_detail span{
+  color: #2d2d2d;
+  font-size: 13px;
+  font-weight: 500;
+}
+.call_box.work{
+  justify-content: flex-end;
+}
+.navbar-light {
+    background-color: transparent;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #fff!important;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color: #fff!important;
+}
+.right_menu .navbar-nav .nav-link {
+    color: #000!important;
+}
+.right_menu .navbar-nav .nav-link:focus, .right_menu .navbar-nav .nav-link:hover {
+    color: #fea900!important;
+}
+.breadcrumb-item a{color:#000;}
+.breadcrumb-item a:hover{color:#fea900;}
+.text-blue{
+  color: #f9bd05;
+  font-weight: 700;
+}
+.leadership {
+  position: absolute;
+  left:50%;
+  top:13px;
+  transform: translateX(-50%);
+}
+.logo-demo:after {
+    background-size: 75%;
+    background-repeat: no-repeat;
+    content: "";
+    position: absolute;
+    top: -190px;
+    left: -100px;
+    width: 520px;
+    height: 390px;
+    z-index: -1;
+    cursor: auto;
+    background: url(https://backoffice.mirrikh.com/assets/images/logo-bg.png);
+}
+.main_logo_mirrikh {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 6px;
+    /*background: rgb(255 255 255);*/
+    border-radius: 5px;
+    margin: 8px;
+}
+@media(min-width: 768px){
+.leadership > div{
+  margin-right: 25px;
+}
+}
+
+.blinking{
+    animation:blinkingText 1.2s infinite;
+}
+@keyframes blinkingText{
+    0%{     color: #0548bd;    }
+    49%{    color: #0548bd; }
+    60%{    color: transparent; }
+    99%{    color:transparent;  }
+    100%{   color: #0548bd;    }
+}
+
+.head-color{
+color: white;
+background-color: rgb(0 0 0 / 32%);
+}
+</style>
+  </head>
+  <body class="hold-transition sidebar-mini">
+    <div class="loader" style="display: none"></div>
+  <div id="loadingGif" style="display:none;position: fixed;z-index: 
+  1111;left: 0;right: 0;height: 100vh;background-color: #ffffffcf;">
+  <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" 
+  style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);"></div>
+
+  <script>
+              $(document).ready(function(){
+                $('.toast').toast('show');
+              });
+  </script> 
+  <div class="col-lg-12 col-md-12" >
+      <div class="position-relative">
+       <div class="leadership d-flex flex-md-row flex-column"></div>
+      <div class="wrapper position-relative"></div>
+      </div>
+       <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light bg-light" style="display:flex;">
+          <!-- Left navbar links -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+            </li>
+          </ul>
+          
+          <div style="margin-left:auto;text-decoration:none" class="right_menu">
+               <ul class="navbar-nav">
+                    <li class="dropdown notifications-menu open">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                      <i class="fas fa-bell"></i>
+                      <span class="label label-warning">0</span>
+                      </a>
+  
+
+                <ul class="dropdown-menu text-center p-0" class="border-custom">
+                    <li class="header text-center">You have 0 notifications</li>
+                    
+                      <!-- inner menu: contains the actual data -->
+                      <ul class="menu pl-0">                          
+                      </ul>
+                    
+                    <li class="footer"><a href="">View all</a></li>
+                </ul>
+
+
+                
+          <div class="collapse navbar-collapse header_drop" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="{% static 'img/images.png'%}" class="img-circle" alt="User Image" style="max-width:100%;height: 100%;">
+                </a>
+          <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
+          <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/logout">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </ul>       
+</div>
+</nav>
+        <!-- Navbar -->
+        <!-- Main Sidebar Container -->
+<aside class="main-sidebar elevation-4">
+<!--<img src="https://backoffice.mirrikh.com/assets/imgs/logo.jpg" alt="SECOURS" height="34px" width="150px" class="logo">-->
+
+<!-- Sidebar -->
+<div class="sidebar">
+<div class="main_logo_mirrikh logo-demo">
+	<div class="inner_logo" style="margin-top:20px;">
+    <img src="{% static 'img/images.png'%}" class="img-fluid display_pro" style="max-height:100px;">
+	  <!-- <img src="https://backoffice.mirrikh.com/assets/imgs/mirrikh-logo-gif.gif" class="img-fluid" style="max-height:34px;margin-top:-8px;margin-left:-44px;position:absolute"> -->
+	</div>
+</div>
+<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+  <div class="image">
+    <img src="{% static 'img/profile_1.png'%}" class="img-circle elevation-2" alt="User Image">
+  </div>
+ <div class="info">
+    <a href="#" class="d-block">{{name}}</a>
+ </div>
+</div>
+<!-- Sidebar Menu -->
+
+<nav class="mt-2">
+              <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item menu-open">
+                  <a href="/home" class="nav-link head-color" >
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>Dashboard</p>
+                  </a>
+                </li>
+              <!-- khushali start -->
+              <li class="nav-item " >
+                  <a href="/add-fraud" class="nav-link" style="">
+                    <i class="nav-icon fas fa-map-pin"></i>
+                    <p>Add Fraud</p>
+                  </a>
+              </li>
+              <!-- khushali start -->              
+              <li class="nav-item ">
+                  <a href="/upload" class="nav-link" style="">
+                    <i class="nav-icon fas fa-file"></i>
+                    <p>Upload Statement</p>
+                  </a>
+              </li>
+         
+            </ul>
+          </nav>
+               
+<!--ADD NEW TEANSACTION FORM -->
+<!-- Trigger Button -->
+<button id="openFormBtn" class="open-btn">+ Add New Transaction</button>
+
+<!-- Popup Modal -->
+<div id="formModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h2 style="margin-bottom: 10px;">Add New Transaction</h2>
+    <form id="txn-form" method="POST">
+      {% csrf_token %}
+      <input type="text" name="recipient" placeholder="Recipient Account or Number" required>
+      <input type="text" name="description" placeholder="Description (optional)">
+      <input type="number" name="amount" placeholder="Amount ₹" required min="0">
+      <select name="type" required>
+        <option value="">Select Type</option>
+        <option value="debit">Debit</option>
+        <option value="credit">Credit</option>
+      </select>
+      <button type="submit">Submit</button>
+    </form>
+    <div id="txn-status"></div>
+  </div>
+</div>
+
+<!-- Styles -->
+<style>
+  .open-btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 20px;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .modal-content input,
+  .modal-content select,
+  .modal-content button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+  }
+
+  .modal-content input:focus,
+  .modal-content select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+  .modal-content button {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    margin-top: 15px;
+    transition: background 0.3s ease;
+  }
+
+  .modal-content button:hover {
+    background-color: #0056b3;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+  }
+
+  #txn-status {
+    margin-top: 10px;
+    color: #28a745;
+    font-weight: bold;
+    text-align: center;
+  }
+</style>
+
+<!-- Script -->
+<script>
+  const modal = document.getElementById("formModal");
+  const openBtn = document.getElementById("openFormBtn");
+  const closeBtn = document.querySelector(".close-btn");
+
+  openBtn.onclick = () => {
+    modal.style.display = "block";
+  };
+
+  closeBtn.onclick = () => {
+    modal.style.display = "none";
+  };
+
+  window.onclick = event => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  };
+</script>
+        </div>
+          <!-- Sidebar -->
+
+
+        </aside>
+        <!-- Main Sidebar Container -->
+
+        <!-- Content Wrapper. Contains page content -->
+         
+<div class="content-wrapper">
+       
+<style>
+.text-muted{
+    word-break: break-word;
+}
+</style>
+<title>DASHBOARD</title>
+
+
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Dashboard</h1>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+
+
+<!-- Main content -->
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Dashboard</h3>
+        </div>
+
+
+<div class="card-body">
+  <div class="row">
+    
+    <!-- 1. Total Fraud Detected -->
+    <div class="col-lg-3 col-12 height_custom">
+      <a href="{% url 'fraud-transactions' %}" style="text-decoration: none; color: inherit; display: block;">
+        <div class="small-box bg-info">
+          <div class="inner">
+            <h3>{{ fraud_count|default_if_none:"0" }}</h3>
+            <p>Total Fraud Detected</p>
+            <p>E-wallet</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 2. Total Transactions -->
+    <div class="col-lg-3 col-12 height_custom">
+      <a href="{% url 'all-transactions' %}" style="text-decoration: none; color: inherit; display: block;">
+      <div class="small-box" style="background-color: #7460ee !important; color: white;">
+        <div class="inner">
+          <h3>{{ transaction_count|default_if_none:"0" }}</h3>
+          <p>Total Transactions</p>
+          <p>E-wallet</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-random" aria-hidden="true"></i>
+        </div>
+      </div>
+    </a>
+    </div>
+
+    <!-- 3. Total Funds -->
+    <div class="col-lg-3 col-12 height_custom">
+      <a href="{% url 'total-funds' %}" style="text-decoration: none; color: inherit; display: block;">
+      <div class="small-box bg-success">
+        <div class="inner">
+          <h3>₹ {{ total_funds|floatformat:2|default_if_none:"0.00" }}</h3>
+
+          <p>Total Funds</p>
+          <p>E-wallet</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-money" aria-hidden="true"></i>
+        </div>
+      </div>
+    </a>
+    </div>
+
+    <!-- 4. Total Lost Funds -->
+    <div class="col-lg-3 col-12 height_custom">
+      <a href="{% url 'lost-transactions' %}" style="text-decoration: none; color: inherit; display: block;">
+        <div class="small-box bg-danger">
+          <div class="inner">
+            <h3>₹ {{ total_lost_funds|floatformat:2|default_if_none:"0.00" }}</h3>
+            <p>Total Lost Funds</p>
+            <p>E-wallet</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-warning" aria-hidden="true"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+<!--charts button-->
+<div style="text-align: center; margin-top: 40px">
+  <a href="{% url 'fraud_dashboard' %}"
+    style="
+      background-color: #1e88e5;
+      padding: 12px 24px;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    "
+    >📈 View Detailed Charts</a>
+</div>
+    <style>
+    /* .small-box{
+    	height:100%;
+    } */
+    /* #pinimg_content {
+        position: relative;
+    }
+    #pinimg_content img {
+        position: absolute;
+     
+        bottom:10px;
+        right: 0px;
+      
+    } */
+    #logo_position{
+        height:158px;
+    }
+    /* #pinimg_content_logo{
+        position: absolute;
+        bottom:2px;
+        right: 0px;
+
+    } */
+</style>
+</section>
+<script type="text/javascript">
+    function myFunction() {
+    var copyText = document.getElementById("myInput");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+    // alert("Copied the text: " + copyText.value);
+
+    swal({
+              title: "Copied",
+              icon: 'warning',
+              text:  copyText.value,
+              showLoaderOnConfirm: true,
+          });
+  }
+
+
+</script>        
+</div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+          <div class="float-right d-none d-sm-block">
+          </div>
+          Copyright &copy; 2025 . All rights Reserved by <strong></strong>
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+          <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+      </div>
+      <!-- Site wrapper -->
+
+<!-- Bootstrap 4 -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+      
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/js/adminlte.min.js"></script>  
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.20/js/jquery.dataTables.js"></script>
+    
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-bs4/1.11.2/dataTables.bootstrap4.js"></script>
+
+      
+</div>
+</div>
+<script type="text/javascript">
+  document.onreadystatechange = function() { 
+  
+    
+}; 
+    $(document).ready(function() {
+
+  $('.image-popup-vertical-fit').magnificPopup({
+    type: 'image',
+    closeOnContentClick: true,
+    mainClass: 'mfp-img-mobile',
+    image: {
+      verticalFit: true
+    }
+    
+  });
+
+  $('.image-popup-fit-width').magnificPopup({
+    type: 'image',
+    closeOnContentClick: true,
+    image: {
+      verticalFit: false
+    }
+  });
+
+  $('.image-popup-no-margins').magnificPopup({
+    type: 'image',
+    closeOnContentClick: true,
+    closeBtnInside: false,
+    fixedContentPos: true,
+    mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+    image: {
+      verticalFit: true
+    },
+    zoom: {
+      enabled: true,
+      duration: 300 // don't foget to change the duration also in CSS
+    }
+  });
+
+});
+</script>
+<script>
+document.getElementById('txn-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  let formData = new FormData(this);
+
+  let response = await fetch("{% url 'add_transaction' %}", {
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': '{{ csrf_token }}'
+    },
+    body: formData
+  });
+
+  let result = await response.json();
+  let statusBox = document.getElementById('txn-status');
+  statusBox.innerText = result.message;
+  statusBox.style.color = result.status === 'fraud' ? 'red' : 'green';
+});
+</script>
+</body>
+</html>
+

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Total Funds Summary</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .summary-box {
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin: 20px 0;
+        text-align: center;
+      }
+      .btn-toggle {
+        margin: 10px;
+      }
+      .table-section {
+        display: none;
+      }
+      .table-section.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2 class="text-center mb-3">Hello, {{ name }} 👋</h2>
+      <h4 class="text-center mb-4">Your Total Transaction Summary</h4>
+
+      <!-- Totals -->
+      <div class="row summary-box">
+        <div class="col-md-6 text-danger">
+          Total Debited (Sent): ₹ {{ total_debit|floatformat:2 }}
+        </div>
+        <div class="col-md-6 text-success">
+          Total Credited (Received): ₹ {{ total_credit|floatformat:2 }}
+        </div>
+      </div>
+
+      <!-- Toggle Buttons -->
+      <div class="text-center">
+        <button
+          class="btn btn-outline-primary btn-toggle"
+          onclick="showSection('debit')"
+        >
+          Debited Transactions
+        </button>
+        <button
+          class="btn btn-outline-success btn-toggle"
+          onclick="showSection('credit')"
+        >
+          Credited Transactions
+        </button>
+      </div>
+
+      <!-- Debited Transactions Table -->
+      <div id="debit" class="table-section active mt-4">
+        <h5 class="text-center">Debited Transactions</h5>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover align-middle">
+            <thead class="table-danger text-center">
+              <tr>
+                <th>#</th>
+                <th>Recipients</th>
+                <th>Date</th>
+                <th>Amount Debited (₹)</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              {% for txn in debit_transactions %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ txn.recipient}}</td>
+                <td>{{ txn.date|date:"d M Y" }}</td>
+                <td>{{ txn.debit }}</td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="4">No debited transactions available.</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Credited Transactions Table -->
+      <div id="credit" class="table-section mt-4">
+        <h5 class="text-center">Credited Transactions</h5>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover align-middle">
+            <thead class="table-success text-center">
+              <tr>
+                <th>#</th>
+                <th>Sender Name</th>
+                <th>Date</th>
+                <th>Amount Credited (₹)</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              {% for txn in credit_transactions %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ txn.description }}</td>
+                <td>{{ txn.date|date:"d M Y" }}</td>
+                <td>{{ txn.credit }}</td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="4">No credited transactions available.</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showSection(type) {
+        document.getElementById("debit").classList.remove("active");
+        document.getElementById("credit").classList.remove("active");
+        document.getElementById(type).classList.add("active");
+      }
+    </script>
+  </body>
+</html>
