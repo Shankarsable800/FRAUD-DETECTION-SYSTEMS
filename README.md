@@ -1,106 +1,141 @@
-# FRAUD-DETECTION-SYSTEM
-A real-time fraud detection system built with Django and machine learning. It analyzes transactions, detects suspicious patterns, alerts users, and maintains a fraud blacklist. Includes dashboard, email notifications, and REST API integration.
+🔐 Fraud Detection System (Django + Machine Learning)
+📖 Project Overview
 
-# Fraud Detection System (Django and Machine Learning)
+A real-time fraud detection system built with Django and Machine Learning.
+It analyzes transactions, detects suspicious patterns, alerts users via email notifications, and maintains a fraud blacklist.
+The project includes an admin dashboard and REST API integration for monitoring and management.
 
-This is a real-time fraud detection system built using Django and Machine Learning. It analyzes transaction data to detect suspicious behavior, alerts users via email, and includes an admin dashboard for monitoring.
+✨ Features
 
-## Features
+⚡ Real-time fraud detection using custom rules and ML model
 
-- Real-time fraud detection using custom rules and ML
-- Django backend with REST API
-- Machine learning model integration
-- Manual fraud blacklist for phone, account, card, and transaction ID
-- Dashboard showing fraud reports and activity
-- Email notifications for detected fraud
-- Clean, responsive frontend (HTML, CSS, Bootstrap)
-- Admin login and management
+🖥️ Django backend with REST API support
 
-## Fraud Detection Logic
+🤖 Machine Learning integration for anomaly detection
 
-- Multiple transactions within short time intervals
-- Location or IP address mismatch
-- Suspicious amounts just under common alert limits
-- Repeated failed attempts
-- Matches with known fraud list (blacklist)
+🚫 Manual fraud blacklist for phone, account, card, and transaction IDs
 
-## Technologies Used
+📊 Dashboard displaying fraud reports and activities
 
-- Python
-- Django and Django REST Framework
-- Scikit-learn (Machine Learning)
-- Pandas, NumPy (Data Analysis)
-- HTML, CSS, Bootstrap
-- SQLite
-- SMTP for email notifications
+📧 Email notifications for detected fraud cases
 
-## Project Structure
+🎨 Clean, responsive frontend (HTML, CSS, Bootstrap)
 
-fraud_detection/  
-├── core/                  - Django app with views, models, logic  
-├── templates/             - HTML templates  
-├── static/                - CSS, JS, images  
-├── trained_model/         - Saved machine learning model  
-├── fraud_list.txt         - Manual fraud entries  
-├── db.sqlite3             - Local database  
-├── manage.py  
-├── requirements.txt  
-└── README.md  
+🔑 Admin login and management panel
 
-## Setup Instructions
+🕵️ Fraud Detection Logic
 
-1. Clone the repository:  
-   git clone https://github.com/yourusername/fraud-detection-system.git  
-   cd fraud-detection-system
+Multiple transactions within short time intervals
 
-2. Create a virtual environment:  
-   python -m venv venv  
-   source venv/bin/activate      (or venv\Scripts\activate on Windows)
+Location/IP mismatch for transactions
 
-3. Install dependencies:  
-   pip install -r requirements.txt
+Suspicious amounts just under alert thresholds
 
-4. Apply database migrations:  
-   python manage.py makemigrations  
-   python manage.py migrate
+Repeated failed login/payment attempts
 
-5. Create superuser (for admin login):  
-   python manage.py createsuperuser
+Matches with known fraud blacklist entries
 
-6. Start the development server:  
-   python manage.py runserver
+🛠️ Technologies Used
 
-7. Open in browser:  
-   http://localhost:8000  
+Python
 
-Admin panel:  
-   http://localhost:8000/admin
+Django & Django REST Framework
 
-## Email Alert Configuration
+Scikit-learn (Machine Learning)
 
-In your Django settings.py, add your email credentials:
+Pandas, NumPy (Data Analysis)
 
-EMAIL_HOST = 'smtp.gmail.com'  
-EMAIL_PORT = 587  
-EMAIL_HOST_USER = 'your_email@gmail.com'  
-EMAIL_HOST_PASSWORD = 'your_app_password'  
-EMAIL_USE_TLS = True  
+HTML, CSS, Bootstrap (Frontend)
 
-Or use environment variables and python-decouple to store credentials securely.
+SQLite (Database)
 
-## Future Improvements
+SMTP (Email notifications)
 
-- Add interactive fraud charts on dashboard
-- Add API authentication (JWT)
-- GeoIP tracking for transaction origin
-- Deployment to Heroku or AWS
+📂 Project Structure
+fraud_detection/
+├── core/              # Django app with views, models, fraud logic
+├── templates/         # HTML templates
+├── static/            # CSS, JS, images
+├── trained_model/     # Saved ML model
+├── fraud_list.txt     # Manual fraud blacklist
+├── db.sqlite3         # Local database
+├── manage.py
+├── requirements.txt
+└── README.md
 
-## License
+⚙️ Setup Instructions
+1. Clone the repository
+git clone https://github.com/yourusername/fraud-detection-system.git
+cd fraud-detection-system
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+2. Create virtual environment
+python -m venv venv
+# Activate
+venv\Scripts\activate   # On Windows  
+source venv/bin/activate # On Mac/Linux
 
-## Author
+3. Install dependencies
+pip install -r requirements.txt
 
-Developed by Dipali Tompe  
-Contact: dipalitompe820@gmail.com  
-GitHub: https://github.com/Dipali820
+4. Apply migrations
+python manage.py makemigrations
+python manage.py migrate
+
+5. Create superuser (Admin)
+python manage.py createsuperuser
+
+6. Run the server
+python manage.py runserver
+
+
+App: http://localhost:8000
+
+Admin: http://localhost:8000/admin
+
+📧 Email Alert Configuration
+
+In settings.py, configure your email credentials:
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'your_email@gmail.com'
+EMAIL_HOST_PASSWORD = 'your_app_password'
+EMAIL_USE_TLS = True
+
+
+🔒 For security, use environment variables with python-decouple instead of hardcoding credentials.
+
+🚀 Future Improvements
+
+📊 Add interactive fraud charts to the dashboard
+
+🔐 Implement API authentication (JWT)
+
+🌍 Enable GeoIP tracking for transactions
+
+☁️ Deploy on Heroku / AWS
+
+📜 License
+
+This project is licensed under the MIT License.
+See the LICENSE
+ file for details.
+
+👩‍💻 Author
+
+Shankar Sable
+📧 Email:sableshankar98@gmail.com
+
+🔗 GitHub: Shankarsable800
+
+
+
+
+
+
+
+
+
+
+
+
